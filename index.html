@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+    <div id="player2"></div>
+    <div id="player3"></div>
+    <div id="player4"></div>
+
+    <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        var playe2;
+        var playe3;
+        var playe4;
+
+        function onYouTubeIframeAPIReady() {
+
+            //
+
+            player = new YT.Player('player', {
+                height: '180',
+                width: '320',
+                videoId: 'hyp352W8VEY',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                },
+                'origin': location.protocol + '//' + location.hostname + "/"
+            });
+
+            const iframe = player.getIframe();
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+
+            //
+
+            player2 = new YT.Player('player2', {
+                height: '180',
+                width: '320',
+                videoId: 'tul5eyXwgbo',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                },
+                'origin': location.protocol + '//' + location.hostname + "/"
+            });
+
+            const iframe2 = player2.getIframe();
+            iframe2.style.position = 'fixed';
+            iframe2.style.left = '0';
+            iframe2.style.bottom = '0';
+
+            //
+
+            player3 = new YT.Player('player3', {
+                height: '180',
+                width: '320',
+                videoId: 'IgaSOALV5ZE',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                },
+                'origin': location.protocol + '//' + location.hostname + "/"
+            });
+
+            const iframe3 = player3.getIframe();
+            iframe3.style.position = 'fixed';
+            iframe3.style.right = '0';
+            iframe3.style.top = '0';
+
+            //
+
+            player4 = new YT.Player('player4', {
+                height: '180',
+                width: '320',
+                videoId: 'uPXpHYs7y3s',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                },
+                'origin': location.protocol + '//' + location.hostname + "/"
+            });
+
+            const iframe4 = player4.getIframe();
+            iframe4.style.position = 'fixed';
+            iframe4.style.right = '0';
+            iframe4.style.bottom = '0';
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        // var done = false;
+        function onPlayerStateChange(event) {
+            // if (event.data == YT.PlayerState.PLAYING && !done) {
+            // setTimeout(stopVideo, 6000);
+            // done = true;
+            // }
+
+        }
+        function stopVideo() {
+            player.stopVideo();
+        }
+
+        window.addEventListener('keyup', (event) => {
+            // console.log(event.key);
+            // if(event.key==1){
+            //     player.setVolume(10);
+            // }
+            // if(event.key==5){
+            //     player.setVolume(50);
+            // }
+        });
+
+        window.addEventListener('mousemove', (event) => {
+            const value2 = event.clientX / window.innerWidth;
+            const value = event.clientY / window.innerHeight;
+
+            if(player.setVolume) player.setVolume(((1 - value)*(1-value2)) * 25);
+            if(player2.setVolume) player2.setVolume(((value)*(1-value2)) * 25);
+            if(player3.setVolume) player3.setVolume(((1 - value)*(value2)) * 25);
+            if(player4.setVolume) player4.setVolume(((value)*(value2)) * 25);
+            // console.log(((value)*(value2)));
+        });
+    </script>
+</body>
+
+</html>
