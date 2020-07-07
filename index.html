@@ -27,12 +27,19 @@
 
         function onYouTubeIframeAPIReady() {
 
+            const playerVars = {
+                    autoplay:1,
+                    loop:1,
+                    playsinline:1
+                };
+
             //
 
             player = new YT.Player('player', {
                 height: '180',
                 width: '320',
                 videoId: 'hyp352W8VEY',
+                playerVars,
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -51,6 +58,7 @@
                 height: '180',
                 width: '320',
                 videoId: 'tul5eyXwgbo',
+                playerVars,
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -69,6 +77,7 @@
                 height: '180',
                 width: '320',
                 videoId: 'IgaSOALV5ZE',
+                playerVars,
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -87,6 +96,7 @@
                 height: '180',
                 width: '320',
                 videoId: 'uPXpHYs7y3s',
+                playerVars,
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
